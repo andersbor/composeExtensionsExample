@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -20,17 +21,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             ExtensionsExampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val result: Boolean = 5.isEven()
-                    val result2: Boolean = 5.isOdd()
-                    val list: List<Int> = listOf(1, 2, 3, 4, 5)
-                    val shortList = list.first(3)
-                    Greeting(
-                        name = shortList.toString(),
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    ExtensionsExample(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ExtensionsExample(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        val result: Boolean = 5.isEven()
+        Text(text = "5 is even: $result")
+        val result2: Boolean = 5.isOdd()
+        Text(text = "5 is odd: $result2")
+        val list: List<Int> = listOf(1, 2, 3, 4, 5)
+        val shortList = list.first(3)
+        Text(text = "First 3 elements: $shortList")
     }
 }
 
@@ -40,22 +47,15 @@ fun Int.isEven(): Boolean { // extension function on Int
 
 fun Int.isOdd() = this % 2 != 0 // extension function in Int, inline
 
+// returns the first "howMany" elements from the list
 fun <T> List<T>.first(howMany: Int): List<T> { // extension function on List<T>, generic
     return this.subList(0, howMany)
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ExtensionsExampleTheme {
-        Greeting("Android")
+        ExtensionsExample()
     }
 }
