@@ -38,6 +38,9 @@ fun ExtensionsExample(modifier: Modifier = Modifier) {
         val list: List<Int> = listOf(1, 2, 3, 4, 5)
         val shortList = list.first(3)
         Text(text = "First 3 elements: $shortList")
+        val strList: List<String> = listOf("a", "b", "c", "d", "e")
+        val shortStrList = strList.first(2)
+        Text(text = "First 2 elements: $shortStrList")
     }
 }
 
@@ -54,7 +57,7 @@ fun <T> List<T>.first(howMany: Int): List<T> { // extension function on List<T>,
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun ExtensionsPreview() {
     ExtensionsExampleTheme {
         ExtensionsExample()
     }
