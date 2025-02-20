@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.extensionsexample.ui.theme.ExtensionsExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             ExtensionsExampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ExtensionsExample(modifier = Modifier.padding(innerPadding))
+                    ExtensionsExample(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -30,7 +33,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ExtensionsExample(modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
+    Column(modifier = modifier.padding(16.dp)) {
         val result: Boolean = 5.isEven()
         Text(text = "5 is even: $result")
         val result2: Boolean = 5.isOdd()
