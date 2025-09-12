@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ExtensionsExample(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(16.dp)) {
+    Column(modifier = modifier.padding(16.dp).fillMaxSize().fillMaxWidth()) {
         val result: Boolean = 5.isEven()
         Text(text = "5 is even: $result")
         val result2: Boolean = 5.isOdd()
