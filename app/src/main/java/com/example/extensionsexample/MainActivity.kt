@@ -52,7 +52,7 @@ fun Int.isEven(): Boolean { // extension function on Int
     return this % 2 == 0
 }
 
-fun Int.isOdd() = this % 2 != 0 // extension function in Int, inline
+fun Int.isOdd() = this % 2 != 0 // extension function on Int, inline
 
 // returns the first "howMany" elements from the list
 fun <T> List<T>.first(howMany: Int): List<T> { // extension function on List<T>, generic
